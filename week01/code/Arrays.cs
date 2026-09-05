@@ -13,7 +13,22 @@ public static class Arrays
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
-        return []; // replace this return statement with your own
+        // Plan:
+        // 1. Create an array of size 'length' to hold the results.
+        // 2. Loop through each index from 0 to length - 1.
+        // 3. At each index i, calculate the multiple as number * (i + 1),
+        //    since index 0 should hold the 1st multiple, index 1 the 2nd, etc.
+        // 4. Store that value in the array at index i.
+        // 5. Return the completed array.
+
+        double[] results = new double[length];
+
+        for (int i = 0; i < length; i++)
+        {
+            results[i] = number * (i + 1);
+        }
+
+        return results;
     }
 
     /// <summary>
@@ -29,5 +44,22 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+
+        // Plan:
+        // 1. Find the split point: data.Count - amount. Everything from this
+        //    index to the end is the part that needs to move to the front.
+        // 2. Use GetRange to grab the "tail" part (the part that moves to front).
+        // 3. Use GetRange to grab the "head" part (the part that stays in order after the tail).
+        // 4. Clear the original list.
+        // 5. Add the tail part first, then the head part, back into the list.
+
+        int splitPoint = data.Count - amount;
+
+        List<int> tail = data.GetRange(splitPoint, amount);
+        List<int> head = data.GetRange(0, splitPoint);
+
+        data.Clear();
+        data.AddRange(tail);
+        data.AddRange(head);
     }
 }
